@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     States state;
     
     Rigidbody rb;
-    public bool isgrounded;
+    public bool isGrounded;
     bool isMolding;
 
     public float JumpPower;
@@ -102,14 +102,14 @@ public class PlayerScript : MonoBehaviour
 
     public void ChargedJump()
     {
-        if(jumpAction.IsInProgress() && isgrounded == true)  // Checkng if space is held
+        if(jumpAction.IsInProgress() && isGrounded == true)  // Checkng if space is held
         {
             JumpPower += Time.deltaTime * 4f;
         }
         
-        if (jumpAction.IsInProgress() == false && isgrounded == true)   // Checking if space is released
+        if (jumpAction.IsInProgress() == false && isGrounded == true)   // Checking if space is released
         {
-            isgrounded = false;
+            isGrounded = false;
             isMolding = false;
             rb.AddForce(Vector3.up * JumpPower * force);
             JumpPower = 1f;
@@ -130,7 +130,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground" || col.gameObject.tag == "DirtySurface")
         {
-            isgrounded = true;
+            isGrounded = true;
             print("landed!");
         }
 
