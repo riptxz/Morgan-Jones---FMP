@@ -1,7 +1,9 @@
 
+using Unity.VectorGraphics;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -14,10 +16,13 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     public bool isGrounded;
     bool isMolding;
+    bool isDead;
 
     public float JumpPower;
     public float force = 100f;
     float Mold = 0f;
+
+    public string MoldText;
     
 
     public enum States // used by all logic
@@ -44,9 +49,14 @@ public class PlayerScript : MonoBehaviour
     {
         DoLogic();
         
-        if (isMolding)
+        if (isMolding)     // If colliding with dirty ground start molding
         {
             Molding();
+        }
+
+        if (isDead)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -104,7 +114,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(jumpAction.IsInProgress() && isGrounded == true)  // Checkng if space is held
         {
-            JumpPower += Time.deltaTime * 4f;
+            JumpPower += Time.deltaTime * 2.5f;                
         }
         
         if (jumpAction.IsInProgress() == false && isGrounded == true)   // Checking if space is released
@@ -121,8 +131,14 @@ public class PlayerScript : MonoBehaviour
     {
         if(isMolding == true)
         {
-            Mold += Time.deltaTime;
+            Mold += Time.deltaTime;               
         }
+    }
+
+    void MoldCount(float MoldCount)
+    {
+        Mold += MoldCount;
+        MoldText = MoldCount.ToString();
     }
 
 
@@ -138,6 +154,12 @@ public class PlayerScript : MonoBehaviour
         {
             isMolding = true;
             print("landed on dirty surface!");
+        }
+
+        if(col.gameObject.tag == "Obstacle")
+        {
+            isDead = true;
+            print("Died to Obstacle");
         }
     }
 
