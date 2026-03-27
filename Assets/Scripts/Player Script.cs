@@ -17,8 +17,10 @@ public class PlayerScript : MonoBehaviour
     public bool isGrounded;
     bool isMolding;
     bool isDead;
+    bool isLaunching;
 
     public float JumpPower;
+    float LaunchPower = 13f;
     public float force = 100f;
     float Mold = 0f;
     
@@ -55,6 +57,11 @@ public class PlayerScript : MonoBehaviour
         if (isDead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (isLaunching)
+        {
+            Launch();
         }
     }
 
@@ -133,10 +140,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void Launch()
+    {
+        if (isLaunching && isGrounded)
+        {
+            rb.AddForce(Vector3.up * LaunchPower * force);
+            isGrounded = false;
+            isLaunching = false;
+        }
+        
+    }
+
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "DirtySurface")
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "DirtySurface" || col.gameObject.tag == "LaunchPad")
         {
             isGrounded = true;
             print("landed!");
@@ -152,6 +170,12 @@ public class PlayerScript : MonoBehaviour
         {
             isDead = true;
             print("Died to Obstacle");
+        }
+
+        if(col.gameObject.tag == "LaunchPad")
+        {
+            isLaunching = true;
+            print("Being launched");
         }
     }
 
