@@ -21,8 +21,6 @@ public class PlayerScript : MonoBehaviour
     public float JumpPower;
     public float force = 100f;
     float Mold = 0f;
-
-    public string MoldText;
     
 
     public enum States // used by all logic
@@ -135,12 +133,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void MoldCount(float MoldCount)
-    {
-        Mold += MoldCount;
-        MoldText = MoldCount.ToString();
-    }
-
 
     void OnCollisionEnter(Collision col)
     {
@@ -167,9 +159,9 @@ public class PlayerScript : MonoBehaviour
     {
 
         //debug text
-        string text = "\nCurrent state =" + state;
-        text += "\nCurrent Jump Power =" + JumpPower;
-        text += "\nMold = " + Mold;
+         string text = "\nCurrent state =" + state;
+         text += "\nCurrent Jump Power =" + JumpPower;
+         text += "\nMold = " + Mold;
 
 
         // define debug text area
