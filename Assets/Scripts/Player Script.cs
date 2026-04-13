@@ -1,6 +1,5 @@
 
-using Unity.VectorGraphics;
-using UnityEditor.ShaderKeywordFilter;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,8 +18,9 @@ public class PlayerScript : MonoBehaviour
     bool isDead;
     bool isLaunching;
 
-    public float JumpPower;
-    float LaunchPower = 13f;
+
+    [Range(0f, 5f)] float jumpPower = 0f;
+    float launchPower = 13f;
     public float force = 100f;
     float Mold = 0f;
     
@@ -117,17 +117,23 @@ public class PlayerScript : MonoBehaviour
 
     public void ChargedJump()
     {
-        if(jumpAction.IsInProgress() && isGrounded == true)  // Checkng if space is held
+
+        if (jumpAction.IsInProgress() && isGrounded == true)  // Checkng if space is held
         {
-            JumpPower += Time.deltaTime * 2.5f;                
+            jumpPower += Time.deltaTime * 5f;
+
+            if(jumpPower > 5f)
+            {
+               jumpPower = 5f;
+            }
         }
         
         if (jumpAction.IsInProgress() == false && isGrounded == true)   // Checking if space is released
         {
             isGrounded = false;
             isMolding = false;
-            rb.AddForce(Vector3.up * JumpPower * force);
-            JumpPower = 1f;
+            rb.AddForce(Vector3.up * jumpPower * force);
+            jumpPower = 1f;
             state = States.Idle;
         }
     }
@@ -144,13 +150,12 @@ public class PlayerScript : MonoBehaviour
     {
         if (isLaunching && isGrounded)
         {
-            rb.AddForce(Vector3.up * LaunchPower * force);
+            rb.AddForce(Vector3.up * launchPower * force);
             isGrounded = false;
             isLaunching = false;
         }
         
     }
-
 
     void OnCollisionEnter(Collision col)
     {
@@ -177,6 +182,7 @@ public class PlayerScript : MonoBehaviour
             isLaunching = true;
             print("Being launched");
         }
+
     }
 
     private void OnGUI()
@@ -184,7 +190,7 @@ public class PlayerScript : MonoBehaviour
 
         //debug text
          string text = "\nCurrent state =" + state;
-         text += "\nCurrent Jump Power =" + JumpPower;
+         text += "\nCurrent Jump Power =" + jumpPower;
          text += "\nMold = " + Mold;
 
 
