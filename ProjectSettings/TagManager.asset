@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - DirtySurface
   - Obstacle
+  - LaunchPad
+  - Fan
   layers:
   - Default
   - TransparentFX
