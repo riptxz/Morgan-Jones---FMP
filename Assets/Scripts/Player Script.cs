@@ -1,5 +1,4 @@
 
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -20,7 +19,7 @@ public class PlayerScript : MonoBehaviour
 
 
     [Range(0f, 5f)] float jumpPower = 0f;
-    float launchPower = 13f;
+    float launchPower = 20f;
     public float force = 100f;
     float Mold = 0f;
     

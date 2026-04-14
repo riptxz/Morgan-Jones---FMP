@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - LaunchPad
   - Fan
+  - Vinegar
   layers:
   - Default
   - TransparentFX
