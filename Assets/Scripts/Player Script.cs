@@ -17,9 +17,8 @@ public class PlayerScript : MonoBehaviour
     bool isDead;
     bool isLaunching;
 
-
     [Range(0f, 5f)] float jumpPower = 0f;
-    float launchPower = 20f;
+    float launchPower = 21.5f;
     public float force = 100f;
     float Mold = 0f;
     
@@ -62,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         {
             Launch();
         }
+
     }
 
     public void DoLogic()
@@ -119,11 +119,11 @@ public class PlayerScript : MonoBehaviour
 
         if (jumpAction.IsInProgress() && isGrounded == true)  // Checkng if space is held
         {
-            jumpPower += Time.deltaTime * 5f;
+            jumpPower += Time.deltaTime * 10f;
 
-            if(jumpPower > 5f)
+            if(jumpPower > 7f)
             {
-               jumpPower = 5f;
+               jumpPower = 7f;
             }
         }
         

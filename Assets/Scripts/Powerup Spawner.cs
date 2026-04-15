@@ -4,8 +4,7 @@ using UnityEngine;
 public class PowerupSpawner : MonoBehaviour
 {
     public GameObject vinegarPrefab;
-    public Transform spawnPoint;
-    public float respawnTime = 20f;
+    public float respawnTime = 5f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +19,6 @@ public class PowerupSpawner : MonoBehaviour
         {
             GameObject a = Instantiate(vinegarPrefab) as GameObject;
             a.transform.position = new Vector3(107, 64.402f, -110.55f);
-
         }
     }
 
