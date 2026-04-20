@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     float launchPower = 21.5f;
     public float force = 100f;
     float Mold = 0f;
+    float speed = 20f;
     
 
     public enum States // used by all logic
@@ -45,16 +46,10 @@ public class PlayerScript : MonoBehaviour
     
     public void FixedUpdate()
     {
-        DoLogic();
         
         if (isMolding)     // If colliding with dirty ground start molding
         {
             Molding();
-        }
-
-        if (isDead)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if (isLaunching)
@@ -62,6 +57,23 @@ public class PlayerScript : MonoBehaviour
             Launch();
         }
 
+        DoLogic();
+
+    }
+
+    public void Update()
+    {
+        if (isDead)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Mold > 100f)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        
     }
 
     public void DoLogic()
@@ -97,19 +109,22 @@ public class PlayerScript : MonoBehaviour
 
    public void PlayerMove()
     {
-        Vector3 vel;
-        float magnitude = rb.linearVelocity.magnitude;
+        // Vector3 vel;
+        // float magnitude = rb.linearVelocity.magnitude;
 
         if (moveAction.IsInProgress())
         {
-            vel = transform.forward * 10f;
-            rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
+            rb.AddForce(Vector3.forward * speed * force);
+
+           // vel = transform.forward * 10f;
+           // rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
         }
 
-        else if(moveAction.IsInProgress() == false)
+        else
         {
-            vel = transform.forward * 0.1f;
-            rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
+            rb.AddForce(Vector3.back * speed);
+           // vel = transform.forward * 0.1f;
+           // rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
             state = States.Idle;
         }
     }
@@ -139,11 +154,16 @@ public class PlayerScript : MonoBehaviour
 
     public void Molding()
     {
-        if(isMolding == true)
+        if (isMolding == true && isGrounded)
         {
-            Mold += Time.deltaTime;               
+            Mold += Time.deltaTime * 5f;
+        }
+        else
+        {
+            isMolding = false;
         }
     }
+
 
     public void Launch()
     {
@@ -151,10 +171,12 @@ public class PlayerScript : MonoBehaviour
         {
             rb.AddForce(Vector3.up * launchPower * force);
             isGrounded = false;
+            isMolding = false;
             isLaunching = false;
         }
         
     }
+
 
     void OnCollisionEnter(Collision col)
     {
