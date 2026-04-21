@@ -1,4 +1,7 @@
 
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,9 +22,9 @@ public class PlayerScript : MonoBehaviour
 
     [Range(0f, 5f)] float jumpPower = 0f;
     float launchPower = 21.5f;
-    public float force = 100f;
+    public float force = 10f;
     float Mold = 0f;
-    float speed = 20f;
+    float speed = 7.5f;
     
 
     public enum States // used by all logic
@@ -34,7 +37,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Start()
     {
-        rb = GetComponent<Rigidbody>(); // defines the rigidbody
+        rb = GetComponent<Rigidbody>(); // gets the rigidbody
         state = States.Idle;    // Player always starts in idle
 
         isMolding = false;
@@ -57,7 +60,6 @@ public class PlayerScript : MonoBehaviour
             Launch();
         }
 
-        DoLogic();
 
     }
 
@@ -73,7 +75,8 @@ public class PlayerScript : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        
+        DoLogic();
+
     }
 
     public void DoLogic()
@@ -95,7 +98,7 @@ public class PlayerScript : MonoBehaviour
     }
 
    public void Idle()
-    {
+   {
         if (moveAction.IsPressed())
         {
             state = States.Move;
@@ -105,29 +108,29 @@ public class PlayerScript : MonoBehaviour
         {
             state = States.ChargedJump;
         }
-    }
+   }
 
    public void PlayerMove()
-    {
+   {
         // Vector3 vel;
         // float magnitude = rb.linearVelocity.magnitude;
 
         if (moveAction.IsInProgress())
         {
-            rb.AddForce(Vector3.forward * speed * force);
+            rb.AddForce(transform.forward * speed);
 
            // vel = transform.forward * 10f;
            // rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
         }
 
-        else
+        else if(moveAction.IsInProgress() == false)
         {
-            rb.AddForce(Vector3.back * speed);
+            rb.AddForce(-transform.forward * speed * 0.1f);
            // vel = transform.forward * 0.1f;
            // rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
             state = States.Idle;
         }
-    }
+   }
 
     public void ChargedJump()
     {

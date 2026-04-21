@@ -1742,7 +1742,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17394988, y: 1.3561166e-15, z: -2.3954838e-16, w: 0.98475456}
-  m_LocalPosition: {x: 88.63, y: 31.376759, z: 75.09873}
+  m_LocalPosition: {x: 102.24, y: 31.376759, z: 2.008731}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1998,8 +1998,8 @@ GameObject:
   - component: {fileID: 375062303}
   - component: {fileID: 375062307}
   - component: {fileID: 375062306}
-  - component: {fileID: 375062305}
   - component: {fileID: 375062304}
+  - component: {fileID: 375062308}
   m_Layer: 0
   m_Name: Fan (3)
   m_TagString: Fan
@@ -2034,29 +2034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb203d56f1646147b7bd20924d49304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fan
-  windPower: 10
-  force: 100
---- !u!65 &375062305
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375062302}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5768094, y: 1.0387653, z: 1}
-  m_Center: {x: -1.2884048, y: -0.019381715, z: -1.4930142e-16}
 --- !u!23 &375062306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2114,6 +2091,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375062302}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &375062308
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375062302}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1395001, y: 1, z: 1.0000002}
+  m_Center: {x: -1.0697539, y: 0, z: -0.0000014305116}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,8 +3004,8 @@ GameObject:
   - component: {fileID: 545607149}
   - component: {fileID: 545607148}
   - component: {fileID: 545607147}
-  - component: {fileID: 545607146}
   - component: {fileID: 545607150}
+  - component: {fileID: 545607151}
   m_Layer: 0
   m_Name: Fan
   m_TagString: Fan
@@ -3015,27 +3013,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &545607146
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545607145}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5779355, y: 1.0387653, z: 1}
-  m_Center: {x: -1.2889688, y: -0.019381715, z: -1.5932012e-16}
 --- !u!23 &545607147
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3120,8 +3097,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb203d56f1646147b7bd20924d49304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fan
-  windPower: 10
-  force: 100
+--- !u!65 &545607151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545607145}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3508098, y: 1, z: 1.0000002}
+  m_Center: {x: -1.1754059, y: 0, z: -0.00000047683716}
 --- !u!1001 &557727112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4915,8 +4911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb203d56f1646147b7bd20924d49304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fan
-  windPower: 10
-  force: 100
 --- !u!65 &1055799093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6148,7 +6142,7 @@ Transform:
   m_GameObject: {fileID: 1389243580}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17394987, y: 1.3780683e-15, z: -3.638204e-16, w: 0.98475456}
-  m_LocalPosition: {x: 88.63, y: 31.376759, z: 75.09873}
+  m_LocalPosition: {x: 102.24, y: 31.376759, z: 2.008731}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7220,8 +7214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb203d56f1646147b7bd20924d49304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fan
-  windPower: 10
-  force: 100
 --- !u!65 &1677488208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7922,8 +7914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb203d56f1646147b7bd20924d49304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fan
-  windPower: 10
-  force: 100
 --- !u!65 &1861361903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8507,8 +8497,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149345327581}
   serializedVersion: 5
-  m_Mass: 10
-  m_LinearDamping: 3
+  m_Mass: 1
+  m_LinearDamping: 2
   m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -8525,7 +8515,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1001 &2117181090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8734,7 +8724,7 @@ Transform:
   m_GameObject: {fileID: 919132149345327581}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.63, y: 28.82, z: 82.11}
+  m_LocalPosition: {x: 102.24, y: 28.82, z: 9.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8841,7 +8831,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149345327581}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3d8b78ff2e87fce44a4648b1dfdfc633, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
