@@ -10,15 +10,15 @@ public class PowerupSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(spawnTime());
+        StartCoroutine(spawnTime());  //Starts the Coroutine
     }
 
     public void spawnVinegar()
     {
-        if (GameObject.FindWithTag("Vinegar") == null)
+        if (GameObject.FindWithTag("Vinegar") == null)   //Looks for any object with the tag and if not
         {
-            GameObject a = Instantiate(vinegarPrefab) as GameObject;
-            a.transform.position = new Vector3(107, 64.402f, -110.55f);
+            GameObject a = Instantiate(vinegarPrefab) as GameObject;         // Gets the desired prefab
+            a.transform.position = new Vector3(107, 64.402f, -110.55f);      // Spawns it onto the spawner
         }
     }
 

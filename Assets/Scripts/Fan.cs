@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    float windPower = 50f;
+    float windPower = 35f;
     
 
     void OnTriggerStay(Collider other)

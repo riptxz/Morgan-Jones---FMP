@@ -21,10 +21,10 @@ public class PlayerScript : MonoBehaviour
     bool isLaunching;
 
     [Range(0f, 5f)] float jumpPower = 0f;
-    float launchPower = 21.5f;
+    float launchPower = 50f;
     public float force = 10f;
     float Mold = 0f;
-    float speed = 7.5f;
+    float speed = 3.5f;
     
 
     public enum States // used by all logic
@@ -137,11 +137,11 @@ public class PlayerScript : MonoBehaviour
 
         if (jumpAction.IsInProgress() && isGrounded == true)  // Checkng if space is held
         {
-            jumpPower += Time.deltaTime * 10f;
+            jumpPower += Time.deltaTime * 15f;
 
-            if(jumpPower > 7f)
+            if(jumpPower > 12f)
             {
-               jumpPower = 7f;
+               jumpPower = 12f;
             }
         }
         
