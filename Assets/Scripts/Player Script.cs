@@ -23,8 +23,8 @@ public class PlayerScript : MonoBehaviour
     [Range(0f, 5f)] float jumpPower = 0f;
     float launchPower = 50f;
     public float force = 10f;
-    float Mold = 0f;
-    float speed = 3.5f;
+    public static float Mold = 0f;
+    float speed = 4f;
     
 
     public enum States // used by all logic
@@ -40,7 +40,9 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>(); // gets the rigidbody
         state = States.Idle;    // Player always starts in idle
 
-        isMolding = false;
+        isMolding = false;      // Cannot mold at the start
+
+        Mold = 0f;              // Incase mold somehow carries over when the player dies
 
         jumpAction = InputSystem.actions.FindAction("Jump");  // Finding the action in the Input System
         moveAction = InputSystem.actions.FindAction("Move");  // Finding the action in the Input System
@@ -104,7 +106,7 @@ public class PlayerScript : MonoBehaviour
             state = States.Move;
         }
 
-        if (jumpAction.IsPressed())
+        if (jumpAction.IsPressed() && isGrounded)
         {
             state = States.ChargedJump;
         }
