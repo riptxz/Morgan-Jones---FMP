@@ -1,7 +1,4 @@
 
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -24,7 +21,10 @@ public class PlayerScript : MonoBehaviour
     float launchPower = 50f;
     public float force = 10f;
     public static float Mold = 0f;
-    float speed = 7.5f;
+    float speed = 5f;
+
+    //inputs
+    bool isMoving;
     
 
     public enum States // used by all logic
@@ -67,7 +67,10 @@ public class PlayerScript : MonoBehaviour
 
     public void Update()
     {
-        if (isDead)
+        //read inputs and store in variables for FixedUpdate to read
+        isMoving = moveAction.IsInProgress();
+
+            if (isDead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -117,15 +120,15 @@ public class PlayerScript : MonoBehaviour
         // Vector3 vel;
         // float magnitude = rb.linearVelocity.magnitude;
 
-        if (moveAction.IsInProgress())
+        if (isMoving)
         {
-            rb.AddForce(transform.forward * speed);
+            rb.AddForce(transform.forward * speed);//this must be called in FixedUpdate
 
            // vel = transform.forward * 10f;
            // rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
         }
 
-        else if(moveAction.IsInProgress() == false)
+        else
         {
             rb.AddForce(-transform.forward * speed * 0.1f);
            // vel = transform.forward * 0.1f;

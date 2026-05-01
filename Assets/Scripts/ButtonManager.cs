@@ -22,6 +22,6 @@ public class ButtonManager : MonoBehaviour
 
     public void Quit()
     {
-        Quit.Application();
+        Application.Quit();
     }
 }
