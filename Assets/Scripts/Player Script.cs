@@ -189,17 +189,14 @@ public class PlayerScript : MonoBehaviour
         
     }
 
-    public void RemoveMold()
+    void OnTriggerEnter(Collider other)      // For the powerup logic
     {
-        Mold = Mold - 30f;
-        moldSlider.value = Mold; // Gets the Players mold from PlayerScript and takes away 30 from it when picking up the powerup
-
-        if(Mold < 0)                                           // Prevents Mold from being negative 
+        if(other.CompareTag("Vinegar"))
         {
-           Mold = 0;
+            Mold = Mold - 30f;
+            moldSlider.value = Mold;
         }
     }
-
 
     void OnCollisionEnter(Collision col)
     {
@@ -225,12 +222,6 @@ public class PlayerScript : MonoBehaviour
         {
             isLaunching = true;
             print("Being launched");
-        }
-
-        if (col.gameObject.tag == "Vinegar")
-        {
-            RemoveMold();
-            print("Picked Up Bottle");
         }
 
     }
