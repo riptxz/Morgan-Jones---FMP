@@ -1,7 +1,8 @@
-
 using UnityEngine;
 
 public class DestroySelf : MonoBehaviour
+
+
 
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,14 +21,7 @@ public class DestroySelf : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            PlayerScript.Mold = PlayerScript.Mold - 30f;  // Gets the Players mold from PlayerScript and takes away 30 from it when picking up the powerup
-            
-            if (PlayerScript.Mold < 0)         // Prevents Mold from being negative 
-            {
-                PlayerScript.Mold = 0;
-            }
-            
-            Destroy(gameObject);
+           Destroy(gameObject);
         }
     }
 }

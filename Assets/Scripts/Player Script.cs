@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
 
@@ -10,6 +10,8 @@ public class PlayerScript : MonoBehaviour
     InputAction jumpAction;
 
     States state;
+
+    public Slider moldSlider;
     
     Rigidbody rb;
     public bool isGrounded;
@@ -21,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     float launchPower = 50f;
     public float force = 10f;
     public static float Mold = 0f;
-    float speed = 5f;
+    float speed = 7.5f;
 
     //inputs
     bool isMoving;
@@ -44,6 +46,9 @@ public class PlayerScript : MonoBehaviour
 
         Mold = 0f;              // Incase mold somehow carries over when the player dies
 
+        moldSlider.value = Mold;
+        moldSlider.maxValue = 100f;
+
         jumpAction = InputSystem.actions.FindAction("Jump");  // Finding the action in the Input System
         moveAction = InputSystem.actions.FindAction("Move");  // Finding the action in the Input System
     }
@@ -51,18 +56,16 @@ public class PlayerScript : MonoBehaviour
     
     public void FixedUpdate()
     {
-        
-        if (isMolding)     // If colliding with dirty ground start molding
-        {
-            Molding();
-        }
 
         if (isLaunching)
         {
             Launch();
         }
 
-
+        if(isMoving && state != States.ChargedJump)
+        {
+            state = States.Move;
+        }
     }
 
     public void Update()
@@ -70,7 +73,7 @@ public class PlayerScript : MonoBehaviour
         //read inputs and store in variables for FixedUpdate to read
         isMoving = moveAction.IsInProgress();
 
-            if (isDead)
+        if (isDead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -78,6 +81,11 @@ public class PlayerScript : MonoBehaviour
         if (Mold > 100f)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (isMolding)     // If colliding with dirty ground start molding
+        {
+            Molding();
         }
 
         DoLogic();
@@ -104,11 +112,6 @@ public class PlayerScript : MonoBehaviour
 
    public void Idle()
    {
-        if (moveAction.IsPressed())
-        {
-            state = States.Move;
-        }
-
         if (jumpAction.IsPressed() && isGrounded)
         {
             state = States.ChargedJump;
@@ -165,6 +168,7 @@ public class PlayerScript : MonoBehaviour
         if (isMolding == true && isGrounded)
         {
             Mold += Time.deltaTime * 5f;
+            moldSlider.value = Mold;
         }
         else
         {
@@ -183,6 +187,17 @@ public class PlayerScript : MonoBehaviour
             isLaunching = false;
         }
         
+    }
+
+    public void RemoveMold()
+    {
+        Mold = Mold - 30f;
+        moldSlider.value = Mold; // Gets the Players mold from PlayerScript and takes away 30 from it when picking up the powerup
+
+        if(Mold < 0)                                           // Prevents Mold from being negative 
+        {
+           Mold = 0;
+        }
     }
 
 
@@ -210,6 +225,12 @@ public class PlayerScript : MonoBehaviour
         {
             isLaunching = true;
             print("Being launched");
+        }
+
+        if (col.gameObject.tag == "Vinegar")
+        {
+            RemoveMold();
+            print("Picked Up Bottle");
         }
 
     }
