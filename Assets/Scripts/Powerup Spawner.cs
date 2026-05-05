@@ -26,7 +26,7 @@ public class PowerupSpawner : MonoBehaviour
     {
         while (true)                       
         {
-            yield return new WaitForSeconds(respawnTime);  //calls every second 
+            yield return new WaitForSeconds(respawnTime);  //waits for 5 seconds
             spawnVinegar();
         }
     }
