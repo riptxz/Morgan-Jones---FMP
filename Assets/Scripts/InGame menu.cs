@@ -19,16 +19,16 @@ public class InGamemenu : MonoBehaviour
             menu.SetActive(true);
             Time.timeScale = 0f;
         }
-
-        if(Input.GetKey(KeyCode.Tab))
-        {
-            menu.SetActive(false);
-            Time.timeScale = 1f;
-        }
     }
 
     public void QuitToMenu()
     {
         SceneManager.LoadScene("Front End");
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        menu.SetActive(false);
     }
 }

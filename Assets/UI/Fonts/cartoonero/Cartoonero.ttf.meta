@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d29e8730b036b3b44ad30b9186235ebb
+guid: 5869b223ed06d9c49a917dcc4b8b225b
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Spring Bubbles
+  - Cartoonero
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

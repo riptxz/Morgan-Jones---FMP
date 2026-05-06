@@ -4,7 +4,7 @@ using UnityEngine;
 public class PowerupSpawner : MonoBehaviour
 {
     public GameObject vinegarPrefab;
-    public float respawnTime = 5f;
+    public float respawnTime = 20f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
