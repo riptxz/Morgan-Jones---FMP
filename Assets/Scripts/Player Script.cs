@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     float launchPower = 50f;
     public float force = 10f;
     public static float Mold = 0f;
-    float speed = 5f;
+    float speed = 2.5f;
 
     //inputs
     bool isMoving;
@@ -195,6 +195,12 @@ public class PlayerScript : MonoBehaviour
         {
             Mold = Mold - 30f;
             moldSlider.value = Mold;
+
+            if (Mold > 0)
+            {
+                Mold = 0;
+            }
+
         }
     }
 
