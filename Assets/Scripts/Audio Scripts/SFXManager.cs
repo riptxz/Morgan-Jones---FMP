@@ -8,6 +8,8 @@ public class SFXManager : MonoBehaviour
     public AudioClip[] audioClip;
     public AudioSource audioSource;
 
+    public float SfxVolume;
+
     private void Awake()
     {
         foreach (Sound s in sounds)
@@ -42,7 +44,17 @@ public class SFXManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (PlayerPrefs.HasKey("SfxVolume") == true)
+        {
+
+            //retrieve it and store it in a variable
+            SfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+        }
+        else
+        {
+            // the key is null 
+            PlayerPrefs.SetFloat("SfxVolume", 1);
+        }
     }
 
     // Update is called once per frame
