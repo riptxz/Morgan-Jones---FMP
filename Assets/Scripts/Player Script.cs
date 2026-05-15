@@ -23,11 +23,9 @@ public class PlayerScript : MonoBehaviour
     float launchPower = 50f;
     public float force = 10f;
     public static float Mold = 0f;
-    float speed = 5f;
-    float speed = 1.75f;
+    float speed = 2.5f;
 
 
-    //inputs
     bool isMoving;
     
 

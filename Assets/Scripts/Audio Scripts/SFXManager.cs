@@ -55,6 +55,8 @@ public class SFXManager : MonoBehaviour
             // the key is null 
             PlayerPrefs.SetFloat("SfxVolume", 1);
         }
+
+       
     }
 
     // Update is called once per frame

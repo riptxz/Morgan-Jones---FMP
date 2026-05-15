@@ -1,14 +1,19 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
     public Sound[] sounds;
+    public float MusicVolume, SFXVolume;
+    public AudioMixer AudioMixer;
+    public AudioSource audioSource;
 
-    public float MusicVolume;
+    public const string MUSIC_KEY = "MusicVolume";
+    public const string SFX_KEY = "SfxVolume";
 
 
     private void Awake()
@@ -58,11 +63,32 @@ public class AudioManager : MonoBehaviour
             // the key is null 
             PlayerPrefs.SetFloat("MusicVolume", 1);
         }
+
+        LoadVolume();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void LoadVolume()
+    {
+        float MusicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+        float SFXVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+
+        AudioMixer.SetFloat(Sliders.MIXER_MUSIC, Mathf.Log10(MusicVolume) * 20);
+        AudioMixer.SetFloat(Sliders.MIXER_SFX, Mathf.Log10(SFXVolume) * 20);
+    }
+
+    public void Mute()
+    {
+        audioSource.mute = true;
+    }
+
+    public void Unmute()
+    {
+        audioSource.mute = false;
     }
 }
