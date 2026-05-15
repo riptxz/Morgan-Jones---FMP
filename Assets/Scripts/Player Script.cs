@@ -24,6 +24,8 @@ public class PlayerScript : MonoBehaviour
     public float force = 10f;
     public static float Mold = 0f;
     float speed = 5f;
+    float speed = 1.75f;
+
 
     //inputs
     bool isMoving;
@@ -101,7 +103,7 @@ public class PlayerScript : MonoBehaviour
 
         if(state == States.Move)
         {
-            PlayerMove();
+             PlayerMove();
         }
 
         if (state == States.ChargedJump)
