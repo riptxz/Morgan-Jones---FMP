@@ -1,10 +1,9 @@
-using Unity.VectorGraphics;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class WinGame : MonoBehaviour
+public class ObstacleSounds : MonoBehaviour
 {
 
+    public AudioSource AudioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,17 +13,15 @@ public class WinGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Win Screen");
+            AudioSource.Play();
         }
-
+        
     }
-
-    
 }

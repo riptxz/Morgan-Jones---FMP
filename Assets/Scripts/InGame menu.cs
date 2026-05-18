@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 public class InGamemenu : MonoBehaviour
 {
     public GameObject menu;
+    public GameObject amenu;
+    public GameObject cmenu;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,7 +17,7 @@ public class InGamemenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape) && amenu.activeInHierarchy == false && cmenu.activeInHierarchy == (false)) // If escape is pressed and audio and controls menu is false
         {
             menu.SetActive(true);
             Time.timeScale = 0f;
