@@ -235,8 +235,7 @@ public class PlayerScript : MonoBehaviour
     {
 
         //debug text
-         string text = "\nCurrent state =" + state;
-         text += "\nCurrent Jump Power =" + jumpPower;
+         string text = "\nCurrent Jump Power =" + jumpPower;
          text += "\nMold = " + Mold;
 
 
