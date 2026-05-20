@@ -23,6 +23,11 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Kitchen Level");
     }
 
+    public void Menu()
+    {
+        SceneManager.LoadScene("Front End");
+    }
+
     public void Quit()
     {
         Application.Quit();

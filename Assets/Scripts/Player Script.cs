@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     float launchPower = 50f;
     public float force = 10f;
     public static float Mold = 0f;
-    float speed = 1.5f;
+    float speed = 1.65f;
 
 
     bool isMoving;
@@ -231,18 +231,18 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    private void OnGUI()
-    {
+  //  private void OnGUI()
+   // {
 
         //debug text
-         string text = "\nCurrent Jump Power =" + jumpPower;
-         text += "\nMold = " + Mold;
+      //   string text = "\nCurrent Jump Power =" + jumpPower;
+      //   text += "\nMold = " + Mold;
 
 
         // define debug text area
-        GUILayout.BeginArea(new Rect(10f, 450f, 1600f, 1600f));
-        GUILayout.Label($"<size=16>{text}</size>");
-        GUILayout.EndArea();
-    }
+     //   GUILayout.BeginArea(new Rect(10f, 450f, 1600f, 1600f));
+     //  GUILayout.Label($"<size=16>{text}</size>");
+     //  GUILayout.EndArea();
+   // }
 }
 

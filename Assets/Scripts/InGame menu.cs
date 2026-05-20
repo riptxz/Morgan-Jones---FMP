@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class InGamemenu : MonoBehaviour
 {
@@ -7,17 +8,20 @@ public class InGamemenu : MonoBehaviour
     public GameObject amenu;
     public GameObject cmenu;
 
+    InputAction MenuAction;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Time.timeScale = 1.0f;
+        MenuAction = InputSystem.actions.FindAction("Menu");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape) && amenu.activeInHierarchy == false && cmenu.activeInHierarchy == (false)) // If escape is pressed and audio and controls menu is false
+        if (MenuAction.IsPressed() && amenu.activeInHierarchy == false && cmenu.activeInHierarchy == false) // If escape is pressed and audio and controls menu is false
         {
             menu.SetActive(true);
             Time.timeScale = 0f;
