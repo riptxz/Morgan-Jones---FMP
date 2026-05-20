@@ -222,7 +222,40 @@
                 {
                     "name": "",
                     "id": "15af7972-3b83-49de-b056-22de8beeb70e",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2e2ae84-4183-4067-a40a-cee015866b1b",
                     "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbaaed8c-a531-445c-8f5f-f092324b837f",
+                    "path": "<XboxOneGamepadAndroid>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b5b725f-3339-49ba-9afa-6eed0f28f600",
+                    "path": "<XboxOneGamepadAndroid>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
